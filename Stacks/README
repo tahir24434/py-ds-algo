@@ -1,0 +1,53 @@
+6.1.1 Stack Abstract Data Type:
+-------------------------------
+A stack is a collection of objects that are inserted and removed according to the LIFO
+principle.
+Formally a stack is an abstract data type such that an instance S supports following methods:
+S.push(e):      Add element e to the top of the stack.
+S.pop()  :      Remove and return the top element from the stack S;
+                An error occurs if stack is empty
+
+Additionally, let us define the following accessor methods
+S.top():        Return a reference to the top element of stack S, without removing it;
+                an error occurs if stack is empty.
+S.is_empty():   Returns True if stack S does not contain any elements.
+len(S):         Return the number of elements in stack S;
+                in python we implement this with special method __len__.
+
+NOTE: elements added to the stack can have arbitrary type. There is no a priori bound on the
+capacity of the stack.
+
+6.1.2 Simple array-based stack implementation
+---------------------------------------------
+see array_stack.py
+
+Although a programmer could directly use the list class in place of a formal stack class, list
+also includes behaviors (e.g adding or removing elements from arbitrary positions) that would
+ break the abstraction that the stack ADT represents.
+ Also, the terminology used by the list class does not precisely align with traditional
+ nomenclature for a stack ADT, in particular the distinction between append and push.
+
+The adapter pattern:
+The adapter design pattern applies to any context where we effectively want to modify an
+existing class so that its methods match those of a related, but different, class or interface.
+One general was to apply the adapter pattern is to define a new class in such a way that it
+contains an instance of existing class as a hidden field, and then to implement each method
+of a new class using methods of this hidden instance variable.
+
+Implementing a Stack using a python list:
+We use the adapter design pattern to define an ArrayStack class that uses an underlying
+Python list for storage.
+
+Analyzing the Array-Based Stack implementation:
+Operation                       Running Time
+S.push(e)                       O(1)*
+S.pop()                         O(1)*
+S.top()                         O(1)
+S.is_empty()                    O(1)
+len(S)                          O(1)
+O(1) time for push and pop are amortized bounds; a typical call to either of these methods
+uses constant time, but there is occasionally an O(n) time worst case, where n is the current
+ number of elements in the stack, when an operation causes the list to resize its internal
+ array. The space usage for a stack is O(n).
+
+

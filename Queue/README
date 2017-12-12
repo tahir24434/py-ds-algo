@@ -1,0 +1,27 @@
+6.2.1 The Queue Abstract Data Type
+----------------------------------
+Queue abstract data type defines a collection that keeps objects in a sequence, where element
+ access and deletion are restricted to the first element in the queue, and element insertion
+ is restricted to the back of the sequence.
+It supports the following two fundamental methods for a queue Q
+Q.enqueue(e):           Add element e to the back of the queue
+Q.dequeue():            Remove and return the first element from the queue Q;
+                        an error occurs if queue is empty.
+The queue ADT also includes the following supporting methods
+Q.first():              Return a reference to the element at the front of the queue, without
+                        removing it. An error occurs if queue is empty.
+Q.is_empty()            Return True if Q does not contain any elements.
+len(Q)                  Returns the number of elements in queue.
+                        In python, we implement this with special method __len__.
+
+6.2.2 Array-Based Queue implementation
+--------------------------------------
+To implement queue, we can use adapter class that uses a Python list as the underlying
+storage. We can use pop(0) to remove the first element from the list while dequeuing.
+As easy as this would be to implement, it is tragically inefficient. When pop is called with
+a non-default index, a loop is executed to shift all elements beyond the specified index to
+the left, so as to fill the hole in the sequence caused by the pop. Therefore a call to pop
+(0) always causes the worst-case behavior of O(n) times.
+
+Implementation using array circularly:
+

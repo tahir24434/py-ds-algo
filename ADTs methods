@@ -1,0 +1,13 @@
+6.1.1 Stack Abstract Data Type:
+-------------------------------
+Formally a stack is an abstract data type such that an instance S supports following methods:
+S.push(e):      Add element e to the top of the stack.
+S.pop()  :      Remove and return the top element from the stack S;
+                An error occurs if stack is empty
+
+Additionally, let us define the following accessor methods
+S.top():        Return a reference to the top element of stack S, without removing it;
+                an error occurs if stack is empty.
+S.is_empty():   Returns True if stack S does not contain any elements.
+len(S):         Return the number of elements in stack S;
+                in python we implement this with special method __len__.
