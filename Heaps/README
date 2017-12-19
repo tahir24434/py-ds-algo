@@ -1,0 +1,116 @@
+Heaps:
+------
+Binary Heap Data Structure is an array object that we can view as a nearly complete
+binary tree. The tree is completely filled on all levels except possibly the lowest,
+which is filled from the left up to a point.
+An array A that represents a heap is an object with two attributes: A.length which gives the
+number of elements in the array,
+and A.heap-size which represents how many elements in the heap are stored within array
+ A. That is, although A[1...A.length] may contain numbers, only the elements in
+ A[1..A.heap-size], where 0 < A.heap-size < A.length, are valid elements of the heap.
+ The root of the tree is A[1], and given the index i of a node, we can easily compute
+ the indices of its parents, left child, right child.
+
+ There are two kinds of binary heaps: max-heaps and min-heaps. In both kinds, the
+ values in the nodes satisfy a "heap property", the specifics of which depends on the
+ kind of heap. In a max-heap, the max-heap property is that for every node i other
+ than the root,
+ A[Parent(i)] >= A[i]
+ that is, the value of node is at most the value of its parents. Thus the largest
+ element in a max-heap is stored at the root, and the subtree rooted at a node
+ contains values no larger than that contained at the node itself.
+ A min-heap is organized in the opposite way; the "min-heap property" is that for
+ every node i other than the root,
+ A[Parent(i)] <= A[i].
+ The smallest element in a min-heap is the root.
+ NOTE: For the heapsort algorithm, we use max-heaps. Min-heaps commonly implement
+ priority queues.
+
+Basic Procedures:
+ ===============
+ MaxHeapify: Runs in O(lgn) time and is key to maintain the max-heap property.
+ BuildMaxHeap: Runs in linear time. It produces a max-heap from an unordered input array.
+ HeapSort: Runs in O(nlgn) time, sorts an array in place.
+ MaxHeapInsert, HeapExtracMax, HeapIncreaseKey and HeapMaximum: Run in O(lgn) time,
+ allow the heap data structure to implement a priority queue.
+
+ Maintaining the heap property
+ =============================
+ In order to maintain the max-heap property, we call the procedure Max-Heapify. Its
+ inputs are an array A and an index i into the array. When it is called, Max-Heapify
+ assumes that the binary trees rooted at left(i) and right(i) are max-heaps, but that
+ A[i] might be smaller than its children, thus violating the max-heap property.
+ Max-Heapify lets the value at A[i] 'float down' in the max-heap so that the subtree
+ rooted at index i obeys the max-heap property.
+ Procedure runs in O(lgn) time.
+
+ Building a heap
+ ===============
+ We can use the procedure MaxHeapify in a bottom-up manner to convert an array A[1...n],
+ where n = A.length, into a max-heap. The elements in the subarray
+ A[floor(n/2)+1 ... n] are all leaves of the tree, and so each is a 1-element heap to
+ begin with. The procedure BuildMaxHeap goes through the remaining nodes of the tree
+ and runs MaxHeapify on each one.
+ Each call to MaxHeapify costs O(lgn) time, and BuildMaxHeap makes O(n) such calls (if
+  we start with an initially empty heap. No bottom up). Thus, the running time is
+  O(nlgn).
+
+HeapSort Algorithm
+==================
+Algorithm proceeds as following
+1. build a max heap by using BuildMaxHeap on input array.
+2. Since maximum element of the array is stored at the root A[1], we can put it into
+   its correct final position by exchanging it with A[n].
+3. Discard node n from the heap by simply decrement the A.heapsize.
+4. Root element now might violate the max-heap property. Call MaxHeapify to restore the
+   max-heap property.
+5. Repeat the process for the max-heap of size n-1 down to heap of size 2.
+HeapSort procedure takes time O(nlogn) time.
+
+Heapsort is a good algorithm, but a good implementation of quikcsort usually beats it
+in practice. Neverthless, the heap datastructure itself has many uses. One of the most
+ popular application of a heap is as an efficient priority queue.
+
+**** Following section discusses the operations which allows the heap data structure to
+     implement a priority queue.
+HeapMaximum
+===========
+Implements the maximum operation in O(1) time.
+
+HeapExtractMax
+==============
+Extract the maximum element of heap. It takes O(lgn) time.
+
+HeapIncreaseKey
+===============
+An index i into the array identifies the element whose key we wish to increase. The
+procedure first updates the key of element A[i] to its new value. Because increase of
+the key of A[i] might violate the max-heap property, the procedure then traverses a
+simple path from this node toward the root to find a proper place for the newly
+increased key.
+The running time of HeapIncreaseKey is O(lgn).
+
+MaxHeapInsert
+=============
+HeapInsert implements the Insert operation. It takes as an input the key of the new
+element to be inserted into the max-heap A. The procedure first expands the max-heap
+by adding to the tree a new leaf whose key is -inf. Then it calls the HeapIncreaseKey
+to set the key of this new node to its correct value and maintain the max-heap property.
+Running time of MaxHeapInsert is O(lgn).
+
+NOTE:
+=====
+In summary, a heap can support any priority-queue operation on a set of size n in O(lgn).
+
+
+References
+----------
+1. https://www.youtube.com/watch?v=B7hVxCmfPtM&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=4
+2. Chapter 6 - HeapSort
+   Introduction to algorithms CLRS
+3. Lecture slides
+   https://courses.csail.mit.edu/6.006/fall11/lectures/lecture4.pdf
+4. Section 9.3 - Heaps
+   Data Structures and algorithms in Python by GoodRich
+
+

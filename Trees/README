@@ -1,0 +1,34 @@
+8.1.1 The tree abstract data type
+---------------------------------
+We define a tree ADT using the concept of a position as an abstraction for a node of a tree.
+An element is stored at each position, and positions satisfy parent-child relationships that
+define the tree structure. A position object for a tree supports the method:
+p.element( ):   Return the element stored at position p.
+
+The tree ADT then supports the following accessor methods, allowing a user to navigate the
+various positions of a tree:
+T.root()            :   Return the position of root of tree
+                        or None if tree is empty
+T.is_root(p)        :   Return True if position p is the root of Tree T.
+T.parent(p)         :   Return the position of the parent of position p,
+                        or None if position is root.
+T.num_children(p)   :   Return the number of children of position p.
+T.children(p)       :   Generate an iteration of the children of position p.
+T.is_leaf(p)        :   Return True if position p is the leaf of Tree T.
+len(T)              :
+T.is_empty()        :
+T.positions()       :   Return the iteration of all positions of tree T.
+iter(T)             :   Generate an iteration of all positions of tree T.
+
+8.2.1 The Binary Tree abstract data type
+----------------------------------------
+A binary tree is an ordered(*1) tree with the following properties:
+   1. Every node has at most two children.
+   2. Each child node is labeled as being either a left child or a right child.
+   3. A left child precedes a right child in the order of children of a node.
+
+As an abstract data type, a binary tree is a specialization of a tree that supports three
+additional accessor methods
+T.left(p)       :   Returns the left child of p, or None if p has no left child.
+T.right(p)      :   Returns the right child of p, or None if p has no right child.
+T.sibling(p)    :   Returns the sibling of p, or None if p has no sibling.

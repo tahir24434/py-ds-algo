@@ -18,13 +18,13 @@ class LinkedDeque(_DoublyLinkedBase):
             raise Exception("Deque is empty")
         return self._trailer._prev._element
 
-    def _insert_first(self, e):
+    def insert_first(self, e):
         """
         Add an element to the front of the deque.
         """
         return self._insert_between(e, self._header, self._header.next)
 
-    def _insert_last(self, e):
+    def insert_last(self, e):
         """
         Add an element to the back of the deque.
         """

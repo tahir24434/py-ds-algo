@@ -11,3 +11,118 @@ S.top():        Return a reference to the top element of stack S, without removi
 S.is_empty():   Returns True if stack S does not contain any elements.
 len(S):         Return the number of elements in stack S;
                 in python we implement this with special method __len__.
+
+6.2.1 Queue Abstract Data Type:
+-------------------------------
+Formally a queue is an such that an instance Q support following methods
+Q.enqueue(e) :  Add element to the back of the queue Q.
+Q.dequeue()  :  Remove element from the front of the queue Q.
+                error occurs if queue is empty.
+
+Moreover, for convenience, following supporting methods are also included
+Q.first()    :  Get (but not remove) the first element of the queue.
+Q.is_empty() :  Return True if the queue Q does not contain any element.
+len(Q)       :  Return the number of elements in the queue.
+
+6.3.1 Double-Ended Queues:
+--------------------------
+Double ended queue (or deque) is an ADT that supports insertion and deletion at both the
+front and the back of the queue. Deque D supports following methods
+D.add_first     :   Add element e to the front of Deque D.
+D.add_last      :   Add element e to the back of Deque D.
+D.remove_first  :   Remove and return the first element from deque D;
+                    an error occurs if the deque is empty.
+D.remove_last   :   Remove and return the last element from the deque D;
+                    An error occurs if the deque is empty
+
+D.first         :   Return (but do not remove) the first element of deque D;
+                    an error occurs if the deque is empty.
+D.last          :   Return (but do not remove) the first element of deque D;
+                    an error occurs if the deque is empty.
+D.is_empty      :   Return True if the deque D does not contain any elements.
+len(D)          :   Return the number of elements in deque D.
+
+8.1.2 The Tree abstract data type
+----------------------------------
+A Tree is an abstract data type that stores elements hierarchically. Formally, we define a
+tree as a set of nodes storing elements such that the nodes have a parent-child relationship
+that satisfies the following properties
+  - if T is nonempty, it has a special node, called the root of T, that has no parent.
+  - Each node v of T different from the root has a unique parent node w; every node with
+  parent w is a child of w.
+
+We define a tree ADT using the concept of a position as an abstraction for a node of a tree.
+An element is stored at each position, and positions satisfy parent-child relationships that
+define the tree structure.
+p.element()         :   Return the element stored at position p.
+Tree ADT then supports the following accessor methods, allowing a user to navigate the
+various positions of a tree.
+T.root()            :   Return the position of the root of tree T,
+                        or None if T is empty.
+T.is_root(p)        :   Return True if position p is the root of a Tree T.
+T.parent(p)         :   Return the position of the parent of position p,
+                        or None if p is the root of T.
+T.num_children(p)   :   Return the number of children of position p.
+T.children(p)       :   Generate an iteration of the children of position p.
+T.is_leaf(p)        :   Return True if position p does not have any children.
+len(T)              :   Return the number of positions (and hence elements) that are
+                        contained in tree T.
+T.is_empty()        :   Return True if tree T does not contain any positions.
+T.positions()       :   Generate an iteration of all positions of tree T.
+iter(T)             :   Generate an iteration of all positions of tree T.
+Any of the above methods that accepts a position as an argument should generate a ValueError
+if that position is invalid for T.
+T.height(p)         :
+T.depth(p)          :
+
+8.2 Binary Tree
+----------------
+A binary tree is an ordered tree with the following properties
+ 1. Every node has at most two children.
+ 2. Each child node is labeled as being either a left child or a right child.
+ 3. A left child precedes a right child in the order of children of a node.
+As an ADT, a binary tree is a specialization of a tree that supports three additional
+accessor methods
+T.left(p)       :   Return the position that represents the left child of p,
+                    or None if p has no left child.
+T.right(p)      :   Return the position that represents the right child of p,
+                    or None if p has no right child.
+T.sibling(p)    :   Return the position that represents the sibling of p,
+                    or None if p has no sibling.
+
+8.3 Implementing Trees
+-----------------------
+The tree and Binary Tree classes that we have defined thus far in this chapter are both
+formally abstract base classes. We have not yet defined key implementation details for how a
+tree will be represented internally, and how we can effectively navigate between parents and
+children.
+Operations for updating a Linked Binary Tree:
+Thus far, we have provided functionality for examining an existing binary tree, However, we
+have not provided any means for changing the structure or content of a tree.
+We chose not to declare update methods as part of Tree or BinaryTree abstract base classes
+for several reasons. First, although the principle of encapsulation suggests that the outward
+ behaviors of a class need not depend on the internal representation, the efficiency of the
+ operations depend greatly upon the representation. We prefer to have each concrete
+ implementation of a tree class offer the most suitable options for updating a tree.
+The second is that we may not want such update methods to be part of a public interface.
+There are many applications of trees, and some forms of update operations that are suitable
+for one application may be unacceptable to other (arithmatic expression tree - replace).
+For linked binary tree, a reasonable set of update methods to support for general usage are
+the following
+T.add_root(e)       :   Create a root for an empty tree, storing e as the element, and return
+                        the position of that root;
+                        an error occurs if the tree is not empty.
+T.add_left(p, e)    :   Create a new node storing element e, link the node as the left child
+                        of position p, and return the resulting position;
+                        an error occurs if p already has left child.
+T.add_right(p, e)   :   Create a new node storing element e, link the node as the right child
+                        of position p, and return the resulting position;
+                        an error occurs if p already has right child.
+T.replace(p, e)     :   Replace the element stored at position p with element e, and return
+                        the previously stored element.
+T.delete(p)         :   Remove the node at position p, replacing it with its child, if an, and
+                        return the element that had been stored at p;
+                        an error occurs if p has two children.
+
+
+
