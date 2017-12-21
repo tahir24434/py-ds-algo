@@ -72,5 +72,6 @@ class _DoublyLinkedBase(object):
             print(header._element)
             header = header._next
 
+
 if __name__ == "__main__":
     dll = _DoublyLinkedBase()

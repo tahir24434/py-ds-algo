@@ -62,7 +62,7 @@ class SinglyLinkedListQueue(object):
             self._head = self._tail = newest
         else:
             self._tail._next = newest
-            self._tail = newest # Updater reference to tail node.
+            self._tail = newest  # Updater reference to tail node.
         self._size += 1
 
     def deque(self):
@@ -85,6 +85,7 @@ class SinglyLinkedListQueue(object):
         if self.is_empty():
             raise Exception("Empty queue")
         return self._head._element  # front aligned with head of list
+
 
 if __name__ == "__main__":
     q = SinglyLinkedListQueue()

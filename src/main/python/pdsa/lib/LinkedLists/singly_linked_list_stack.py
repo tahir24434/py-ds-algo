@@ -19,7 +19,7 @@ from nose.tools import assert_equal
 
 class SinglyLinkedListStack(object):
     class _Node:
-        __slots__ = '_element', '_next' # streamline memory usage
+        __slots__ = '_element', '_next'  # streamline memory usage
 
         def __init__(self, element, nxt=None):   # Initialize node fields
             self._element = element         # Reference to user element
@@ -51,6 +51,7 @@ class SinglyLinkedListStack(object):
         if self.is_empty():
             raise Exception("Stack is empty")
         return self._head._element
+
 
 if __name__ == "__main__":
     stack = SinglyLinkedListStack()

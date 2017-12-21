@@ -22,7 +22,7 @@ points to the head. We can think of a circular list as a ring of elements.
 
 class SinglyLinkedList(object):
     class _Node:
-        __slots__ = '_element', '_next' # streamline memory usage
+        __slots__ = '_element', '_next'  # streamline memory usage
 
         def __init__(self, element, nxt=None):   # Initialize node fields
             self._element = element         # Reference to user element
@@ -83,7 +83,7 @@ class SinglyLinkedList(object):
         element = self._head
         self._head = self._head._next
         self._size -= 1
-        if self.is_empty(): # if there was only one element
+        if self.is_empty():  # if there was only one element
             self._tail = None
         return element
 
@@ -101,4 +101,3 @@ class SinglyLinkedList(object):
         doubly linked.
         """
         pass
-
