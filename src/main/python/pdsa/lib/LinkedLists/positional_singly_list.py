@@ -54,6 +54,16 @@ class SinglyLinkedList:
         self._size += 1
         return self._make_position(node)
 
+    def add_before(self, p, e):
+        """
+        Add element at front of the list.
+        """
+        node = self._validate(p)
+        elem_node = self._Node(e, node)
+        self._header._next = elem_node
+        self._size += 1
+        return self._make_position(elem_node)
+
     def first(self):
         return self._make_position(self._header._next)
 

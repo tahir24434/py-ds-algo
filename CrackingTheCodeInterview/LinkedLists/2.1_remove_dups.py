@@ -1,4 +1,4 @@
-from pdsa.lib.LinkedLists.positional_doubly_list import PositionalList
+from pdsa.lib.LinkedLists.positional_doubly_list import DoublyLinkedList
 
 
 def remove_dups(pl):
@@ -14,7 +14,7 @@ def remove_dups(pl):
         walk = after
 
 if __name__ == "__main__":
-    pl = PositionalList()
+    pl = DoublyLinkedList()
     pl.add_first(7)
     pl.add_first(2)
     pl.add_first(7)

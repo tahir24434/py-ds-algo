@@ -82,7 +82,7 @@ class ArrayStack(object):
         return self._data[-1]
 
 if __name__ == '__main__':
-    stack = Stack()
+    stack = ArrayStack()
     stack.push(5)
     stack.push(7)
     assert_equal(stack.top(), 7)
