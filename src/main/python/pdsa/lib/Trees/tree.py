@@ -1,3 +1,6 @@
+from pdsa.lib.LinkedLists.singly_linked_list_queue import SinglyLinkedListQueue
+
+
 class Tree:
     """
     Abstract base class representing a tree structure.
@@ -108,3 +111,41 @@ class Tree:
         if self.is_leaf(p):
             return 0
         return 1 + max(self._height(c) for c in self.children(p))
+
+    def preorder(self):
+        """
+        The preorder, postorder, and breadth-first traversal algorithms are applicable to
+        all trees, and so we include their implementations within the Tree abstract base
+        class
+        :return:
+        """
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+
+    def _subtree_preorder(self, p):
+        yield p
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):
+                yield other
+
+    def postorder(self):
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+
+    def _subtree_postorder(self, p):
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
+    def breadth_first(self):
+        if not self.is_empty():
+            fringe = SinglyLinkedListQueue()
+            fringe.enqueue(self.root())
+            while not fringe.is_empty():
+                p = fringe.deque()
+                yield p
+                for c in self.children(p):
+                    fringe.enqueue(c)

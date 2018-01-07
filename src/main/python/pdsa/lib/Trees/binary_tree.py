@@ -1,4 +1,4 @@
-from tree import Tree
+from pdsa.lib.Trees.tree import Tree
 
 
 class BinaryTree(Tree):
@@ -40,10 +40,22 @@ class BinaryTree(Tree):
         if self.right(p) is not None:
             yield self.right(p)
 
-    def num_children(self, p):
-        count = 0
+    def inorder(self):
+        """
+        The inorder traversal algorithm, because it explicitly relies on the notion of a left
+        and right child of a node, only applies to binary trees. We therefore include its
+        definition within the body of BinaryTree class.
+        :return:
+        """
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+
+    def _subtree_inorder(self, p):
         if self.left(p) is not None:
-            count += 1
+            for other in self._subtree_inorder(self.left(p)):
+                yield other
+        yield p
         if self.right(p) is not None:
-            count += 1
-        return count
+            for other in self._subtree_inorder(self.right(p)):
+                yield other
