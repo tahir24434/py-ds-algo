@@ -27,6 +27,7 @@ class Tree:
             :param other:
             :return: Returns True if other Position does NOT represents the same location.
             """
+            return not (self == other)
 
     def root(self):
         """
@@ -149,3 +150,10 @@ class Tree:
                 yield p
                 for c in self.children(p):
                     fringe.enqueue(c)
+
+    def positions(self):
+        return self.preorder()
+
+    def __iter__(self):
+        for p in self.positions():
+            yield p.element()

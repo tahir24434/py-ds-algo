@@ -59,3 +59,10 @@ class BinaryTree(Tree):
         if self.right(p) is not None:
             for other in self._subtree_inorder(self.right(p)):
                 yield other
+
+    def positions(self):
+        """
+        override inherited version to make inorder the default.
+        :return:
+        """
+        return self.inorder()

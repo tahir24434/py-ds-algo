@@ -32,3 +32,41 @@ additional accessor methods
 T.left(p)       :   Returns the left child of p, or None if p has no left child.
 T.right(p)      :   Returns the right child of p, or None if p has no right child.
 T.sibling(p)    :   Returns the sibling of p, or None if p has no sibling.
+
+8.3 Implementing Trees
+----------------------
+Tree and Binary Tree classes are both formally abstract base classes.
+Concrete implementation of a tree must provide methods root, parent, num_children,
+children, __len__, and in the case of BinaryTree, the additional accessor left
+and right.
+A natural way to realize a binary tree T is to use a linked structure, with a node that
+maintains references to the element stored at a position p and to the nodes associated
+with the children and parent of p. The tree itself maintains an instance variable storing
+a reference to the root node (if any), and a variable, called size.
+For linked binary trees, a reasonable set of update methods to support for general usage
+are the following:
+T.add_root(e):      Create a root for an empty tree, storing e as the element, and
+                    return the position of that root; and error occurs if tree is not
+                    empty.
+T.add_left(p, e):   Create a new node storing element e, link the node as the left
+                    child of position p, and return the resulting position; an error
+                    occurs if p already has a left child.
+T.add_right(p, e):  Create a new node storing element e, link the node as the right
+                    child of position p, and return the resulting position; an error
+                    occurs if p already has a right child.
+T.replace(p, e):    Replace the element stored at position p with element e, and
+                    return the previously stored element.
+T.delete(p):
+T.attach(p, T1, T2):
+
+8.4 Tree Traversal algorithms
+=============================
+A traversal of a tree T is a systematic way of accessing, or 'visiting', all the
+positions of T. The specific action associated with the 'visit' of a position p
+depends on the application of this traversal, and could involve anything from
+ incrementing a counter to performing some complex computation for p.
+
+8.4.1 Preorder and Postorder Traversal of General Trees
+-------------------------------------------------------
+In a preorder traversal of a tree T, the root of T is visited first and then the
+subtrees rooted at its children are traversed recursively.

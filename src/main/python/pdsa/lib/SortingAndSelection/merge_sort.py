@@ -6,8 +6,6 @@ def merge(A, p, q, r):
     print(p, q, r)
     left = A[p:q+1] + [float('inf')]
     right = A[q+1:r+1] + [float('inf')]
-    print(left)
-    print(right)
     i = j = 0
 
     for x in range(p, r+1):

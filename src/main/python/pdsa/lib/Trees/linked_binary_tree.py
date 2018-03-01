@@ -76,6 +76,12 @@ class LinkedBinaryTree(BinaryTree):
         self._size += 1
         return self._make_position(self._root)
 
+    def _replace(self, p, e):
+        node = self._validate(p)
+        old = node._element
+        node._element = e
+        return old
+
     def __len__(self):
         return self._size
 
@@ -87,7 +93,4 @@ class LinkedBinaryTree(BinaryTree):
         if node._right is not None:
             count += 1
         return count
-
-    def positions(self):
-        return self.preorder()
 
