@@ -1,7 +1,6 @@
 from nose.tools import assert_false, assert_true
 from pdsa.lib.Trees.tree_map import TreeMap
 
-
 def _is_balanced(bst, p):
     if p is None:
         return 0

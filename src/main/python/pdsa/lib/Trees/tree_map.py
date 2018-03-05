@@ -131,8 +131,10 @@ class TreeMap(LinkedBinaryTree):
 
         # Keep going up untill node becomes right of parent node
         walk = p
-        while walk is not None and self.right(self.parent(walk)) is not walk:
-            walk = self.parent(walk)
+        ancestor = self.parent(walk)
+        while ancestor is not None and walk == self.left(ancestor):
+            walk = ancestor
+            ancestor = self.parent(walk)
         return walk
 
     def after(self, p):
