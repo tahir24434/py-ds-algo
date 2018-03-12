@@ -13,24 +13,39 @@ https://www.youtube.com/watch?v=k4y5Pr0YVhg
 from nose.tools import assert_equal
 
 
-def coin_change_ways(amount, coins, current_coin):
+def coin_change_ways(amount, coins):
     if amount == 0:
         return 1
     if amount < 0:
         return 0
 
-    nw = 0
-    for i in range(current_coin, len(coins)):
-        nw += coin_change_ways(amount-coins[i], coins, i)
-    return nw
+    num_ways = 0
+    return sum([coin_change_ways(amount - coin, coins) for coin in coins])
+    #for coin in coins:
+    #    if coin <= amount:
+    #        num_ways += coin_change_ways(amount-coin, coins)
+    #return num_ways
+
+
+coinsOptions = [1, 2, 3]
+
+
+def numberOfWays(target):
+    if (target < 0):
+        return 0
+    elif(target == 0):
+        return 1
+    else:
+        return sum([numberOfWays(target - coin) for coin in coinsOptions])
 
 
 if __name__ == "__main__":
+    print (numberOfWays(5))
     N = 4
     S = [1, 2, 3]
-    assert_equal(coin_change_ways(N, S, 0), 4)
+    assert_equal(coin_change_ways(N, S), 4)
 
     N = 10
     S = [2, 5, 3, 6]
-    assert_equal(coin_change_ways(N, S, 0), 5)
+    assert_equal(coin_change_ways(N, S), 5)
     print("Success ...")
