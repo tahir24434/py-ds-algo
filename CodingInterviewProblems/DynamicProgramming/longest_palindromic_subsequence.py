@@ -12,7 +12,9 @@ from nose.tools import assert_equal
 
 def lps_len(X):
     memo = {}
-    return _lps_len(X, 0, len(X)-1, memo)
+    res = _lps_len(X, 0, len(X)-1, memo)
+    print(memo)
+    return res
 
 
 def _lps_len(X, i, j, memo):
@@ -33,4 +35,8 @@ def _lps_len(X, i, j, memo):
 if __name__ == "__main__":
     A = "abbdcacb"
     assert_equal(lps_len(A), 5)
+    A = "accada"
+    assert_equal(lps_len(A), 4)
+    A = "abdea"
+    assert_equal(lps_len(A), 3)
     print("Success ...")
