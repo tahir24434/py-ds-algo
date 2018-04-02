@@ -25,8 +25,8 @@ class SinglyLinkedList(object):
         __slots__ = '_element', '_next'  # streamline memory usage
 
         def __init__(self, element, nxt=None):   # Initialize node fields
-            self._element = element         # Reference to user element
-            self._next = nxt                # Reference to next node
+            self._element = element              # Reference to user element
+            self._next = nxt                     # Reference to next node
 
     def __init__(self):
         self._head = None

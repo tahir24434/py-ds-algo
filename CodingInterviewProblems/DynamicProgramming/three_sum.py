@@ -32,11 +32,9 @@ class Solution:
         return sum == 0
 
     def _threeSum(self, nums, chosen, k, result):
-        print(chosen)
         if k == 0:
             if self.is_zero_sum(chosen):
                 result.append([chosen[0], chosen[1], chosen[2]])
-                #print(result)
         else:
             for i in range(len(nums)):
                 chosen.append(nums[i])
